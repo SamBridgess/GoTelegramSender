@@ -1,4 +1,4 @@
-const url = "127.0.0.1:8080/request"
+const url = "request"
 
 var inputForm = document.getElementById("inputForm")
 
@@ -10,9 +10,7 @@ inputForm.addEventListener("submit", (e)=>{
 
         method:"POST",
         body:formdata,
-    }).then(
-        response => response.text()
-    ).catch(
+    }).catch(
         error => console.error(error)
     )
 
@@ -20,23 +18,3 @@ inputForm.addEventListener("submit", (e)=>{
 
 
 })
-/*
-function sendRequest(){
-    let message = $('#message')
-    $.ajax({
-        type: 'POST',
-        url: 'http://localhost:8080',
-        //url: '../main.go/request',
-        data: {
-            'message': message
-        },
-        success: function(response){
-            alert(response)
-        },
-        error: function (response){
-            alert(response)
-        }
-    });
-}
-
- */
