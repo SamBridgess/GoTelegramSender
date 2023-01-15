@@ -1,4 +1,4 @@
-const url = "127.0.0.1:8080"
+const url = "127.0.0.1:8080/request"
 
 var inputForm = document.getElementById("inputForm")
 
