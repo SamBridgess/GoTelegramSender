@@ -5,17 +5,18 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1,
 minimum-scale=1.0">
     <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
-    <script src="SendRequest.js" defer></script>
+
     <title>INDEX</title>
 </head>
 <body>
 
     <h1>FORM:</h1>
-    <form onSubmit="sendRequest();">
+    <form id="inputForm">
         <label for="m">Enter message:</label>
         <input type="text" name="message" id="m" placeholder="Message">
-        <input type="submit">
+        <button type="submit">Submit</button>
     </form>
 
 </body>
+<script src="/public/SendRequest.js"></script>
 </html>
