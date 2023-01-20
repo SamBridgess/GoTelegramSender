@@ -5,32 +5,39 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1,
 minimum-scale=1.0">
     <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
-
-    <title>INDEX</title>
+    <link rel="stylesheet" type="text/css" href="styles/styles.css"/>
+    <title>Send message to telegram</title>
 </head>
 <body>
+    <header class="header">
+        <h1>Send message to telegram:</h1>
+    </header>
 
-    <h1>Send message to telegram:</h1>
+
     <form id="inputForm">
-        <label for="username">Enter username :</label>
-        @<input type="text" maxlength="32" size="50" name="username" id="username" placeholder="Username"></p>
-        <div class="username_error">
+        <label for="username">Enter username:</label><p>
+        <input type="text" maxlength="32" size="50" name="username" id="username" placeholder="Username"></p>
+
+        <label for="message">Enter message:</label><p>
+        <textarea name="message" id="message" placeholder="Message"></textarea>
+
+        <input type ="submit" class="button" value="Submit" id="submit">
+        <input type="reset" class="button" value="Reset" id="reset" onclick="resetForm()">
+
+
+
+        <div class="error">
             <span id="username_error"></span>
         </div>
-
-        <label for="message">Enter message:</label>
-        <input type="text" size="50" name="message" id="message" placeholder="Message"></p>
-        <div class="message_error">
-            <span id="message_empty_error"></span>
+        <div class="error">
+            <span id="message_error"></span>
         </div>
-
-        <input type ="submit" value="Submit" id="submit">
-        <input type="reset" value="Reset" id="reset_button" onclick="resetForm()">
+        <div class="response_result">
+            <span id="response"></span>
+        </div>
     </form>
-    <div class="response_result">
-        <span id="response"></span>
-    </div>
+
 </body>
-<script src="SendRequest.js"></script>
-<script src="ResetForm.js"></script>
+<script src="js/SendRequest.js"></script>
+<script src="js/ResetForm.js"></script>
 </html>
