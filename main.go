@@ -1,11 +1,13 @@
 package main
 
 import (
+	"embed"
 	"encoding/csv"
 	"encoding/json"
 	"fmt"
 	tgbotapi "gopkg.in/telegram-bot-api.v4"
 	"io"
+	"io/fs"
 	"net/http"
 	"os"
 	"strconv"
@@ -15,15 +17,16 @@ type Config struct {
 	TelegramBotToken string
 }
 
+//go:embed public
+var frontend embed.FS
+
 var bot *tgbotapi.BotAPI
 var usersMap map[string]int64
 
 func main() {
+	port := ":8080"
 	usersMap = map[string]int64{}
 	readUsers()
-	//for key, value := range mp {
-	//	fmt.Println(key, " ", value)
-	//}
 
 	file, _ := os.Open("config.json")
 	decoder := json.NewDecoder(file)
@@ -32,11 +35,10 @@ func main() {
 
 	bot, _ = tgbotapi.NewBotAPI(configuration.TelegramBotToken)
 	bot.Debug = true
-
 	go botListener(bot)
 
-	port := ":8080"
-	http.Handle("/", http.FileServer(http.Dir("./public")))
+	stripped, _ := fs.Sub(frontend, "public")
+	http.Handle("/", http.FileServer(http.FS(stripped)))
 	http.HandleFunc("/request", frontRequestHandler)
 
 	fmt.Println("Listening port", port)
