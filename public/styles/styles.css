@@ -30,22 +30,14 @@ label
     font-weight: 700;
     color: #1c87c9;
 }
-/*
-error
-{
-    margin-bottom: 100px;
-    color: red;
-    border: solid;
-    height: 30px;
-}
-*/
 error
 {
     background-color: #fce4e4;
     border: 1px solid #fcc2c3;
     color: red;
     padding: 5px;
-
+    font-family: 'Montserrat', sans-serif;
+    border-radius: 5px;
 }
 .error
 {
@@ -57,6 +49,8 @@ success
     border: 1px solid #5f8343;
     color: green;
     padding: 5px;
+    font-family: 'Montserrat', sans-serif;
+    border-radius: 5px;
 }
 #username
 {

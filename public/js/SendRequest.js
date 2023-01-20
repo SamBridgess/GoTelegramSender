@@ -3,7 +3,7 @@ const url = "request"
 const inputForm = document.getElementById("inputForm");
 inputForm.addEventListener("submit", (e)=>{
     e.preventDefault()
-    //$('.response_result').html("");
+    $('.response_result').html("");
     let formData = new FormData(inputForm)
     let userVal = validateUsername(formData.get("username"));
     let mesVal = validateMessage(formData.get("message"));
@@ -31,7 +31,6 @@ function addResponseResult(response) {
 }
 function validateUsername(username) {
     let errorInfo = "";
-
     if(username.length === 0)
         errorInfo += "<error>Please, enter username</error>"
     else {
