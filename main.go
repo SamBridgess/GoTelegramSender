@@ -10,6 +10,8 @@ import (
 	"io/fs"
 	"net/http"
 	"os"
+	"path"
+	"runtime"
 	"strconv"
 )
 
@@ -19,7 +21,8 @@ type Config struct {
 
 //go:embed public
 var frontend embed.FS
-
+var configuration = Config{}
+var _, filename, _, _ = runtime.Caller(0)
 var bot *tgbotapi.BotAPI
 var usersMap map[string]int64
 
@@ -27,11 +30,7 @@ func main() {
 	port := ":8080"
 	usersMap = map[string]int64{}
 	readUsers()
-
-	file, _ := os.Open("config.json")
-	decoder := json.NewDecoder(file)
-	configuration := Config{}
-	decoder.Decode(&configuration)
+	readConfig()
 
 	bot, _ = tgbotapi.NewBotAPI(configuration.TelegramBotToken)
 	bot.Debug = true
@@ -99,9 +98,8 @@ func frontRequestHandler(w http.ResponseWriter, r *http.Request) {
 	}
 }
 func readUsers() {
-	f, _ := os.Open("users.csv")
+	f, _ := os.Open(path.Join(path.Dir(filename), "users.csv"))
 	r := csv.NewReader(f)
-
 	for {
 		line, err := r.Read()
 
@@ -117,7 +115,8 @@ func readUsers() {
 	}
 }
 func writeUsers() {
-	f, _ := os.Create("users.csv")
+
+	f, _ := os.Create(path.Join(path.Dir(filename), "users.csv"))
 	w := csv.NewWriter(f)
 
 	for key, value := range usersMap {
@@ -127,4 +126,14 @@ func writeUsers() {
 		}
 	}
 	w.Flush()
+}
+func readConfig() {
+	f, _ := os.Open(path.Join(path.Dir(filename), "config.json"))
+
+	decoder := json.NewDecoder(f)
+	err := decoder.Decode(&configuration)
+	if err != nil {
+		fmt.Println("An error occurred while reading config")
+	}
+	fmt.Println("Config loaded")
 }
