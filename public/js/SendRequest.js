@@ -48,7 +48,7 @@ function validateUsername(username) {
 }
 function validateMessage(message){
     let errorInfo = "";
-    if(message.length === 0)
+    if(message.trim().length === 0)
         errorInfo += "<error>Please, enter message</error>"
     $('#message_error').html(errorInfo);
     return errorInfo === "";
