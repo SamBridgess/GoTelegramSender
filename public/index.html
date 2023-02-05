@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1,
 minimum-scale=1.0">
     <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
+    <script src="js/Theme.js"></script>
     <link rel="stylesheet" type="text/css" href="styles/styles.css"/>
     <title>Send message to telegram</title>
 </head>
-<body>
-    <header class="header">
-        <h1>Send message to telegram:</h1>
+<body id="main">
+    <header class="header" id = "header">
+        <h1>Send message to telegram</h1>
     </header>
-
 
     <form id="inputForm">
         <label for="username">Enter username:</label><p>
@@ -34,7 +34,7 @@ minimum-scale=1.0">
             <span id="response"></span>
         </div>
     </form>
-
+    <input type ="button" class="button" id="theme" onclick="darkLight()" value="Light theme">
 </body>
 <script src="js/SendRequest.js"></script>
 </html>

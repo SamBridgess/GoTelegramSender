@@ -1,7 +1,7 @@
 body
 {
-    background: #111;
-    color: #f4f4f4;
+    background: #202226;
+    color: white;
 }
 .header
 {
@@ -16,12 +16,22 @@ h1
 form
 {
     padding-top: 10px;
-    background: #3c4246;
+    background: #2b2e34;
     border-radius: 10px;
+    border: 1px solid #3e424b;
     text-align: center;
     height: 450px;
     width: 350px;
     margin: auto;
+}
+input[type="text"], textarea {
+    background: #2b2e34;
+    color: white;
+    border: 1px solid #474c56;
+    outline:none;
+}
+input::placeholder, textarea::placeholder{
+    color: #a8a9a9;
 }
 label
 {
@@ -70,15 +80,23 @@ success
 
 
 .button {
+    background: rgb(42, 170, 237);
     text-decoration: none;
-    color: black;
+    color: white;
     border-radius: 10px;
-    padding: 15px 30px;
+    border: none;
+    width: 150px;
+    padding: 10px 10px;
     margin: 10px 20px;
     font-family: 'Montserrat', sans-serif;
     text-transform: uppercase;
     letter-spacing: 2px;
 }
 .button:hover {
-    background: #2AABEE;
+    background: #2a6eec;
+}
+#theme {
+    position: absolute;
+    top: 80px;
+    left: 0px;
 }
