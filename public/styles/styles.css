@@ -100,3 +100,8 @@ success
     top: 80px;
     left: 0px;
 }
+#bot_link {
+    position: absolute;
+    top: 120px;
+    left: 0px;
+}
